@@ -32,11 +32,6 @@
     s = status --short --branch
     st = status 
     su = submodule update
-	poh = push origin head
-	fo = fetch --prune origin
-	fu = fetch --prune upstream
-[filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
+    poh = push origin head
+    fo = fetch --prune origin
+    fu = fetch --prune upstream
