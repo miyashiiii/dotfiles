@@ -1,0 +1,42 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Miyashita Yosuke
+[core]
+	editor = code --wait
+	excludesfile = /Users/miyashita/.gitignore_global
+[diff]
+        tool = pycharm
+[difftool "pycharm"]
+        cmd = /usr/local/bin/charm diff "$LOCAL" "$REMOTE" && echo "Press enter to continue..." && read
+[merge]
+        tool = pycharm
+[mergetool "pycharm"]
+        cmd = /usr/local/bin/charm merge "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+        keepBackup = false
+[alias]
+    alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
+    b = branch -a
+    br = browse-remote
+    ci = commit 
+    co = checkout
+    d = difftool -dy
+    dc = diff --cached
+    di = diff   
+    dic = diff --cached
+    f = fetch --prune
+    fs = !git f && git su
+    ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >> .gitignore
+    info = remote show origin
+    l = log --graph --date=short --decorate --oneline --all --format=\"%C(yellow)%h%C(reset) %C(auto)%d%C(reset) %s %C(cyan)@%an%C(reset) \"%C(magenta)[%ad]%C(reset)
+    rs = reset
+    s = status --short --branch
+    st = status 
+    su = submodule update
+	poh = push origin head
+	fo = fetch --prune origin
+	fu = fetch --prune upstream
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f

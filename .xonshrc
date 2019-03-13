@@ -1,0 +1,47 @@
+$PATH.append("/usr/local/bin")
+$PATH.append("/Users/miyashita/.nodebrew/current/bin")
+
+# プロンプト上には場所だけ出す
+$PROMPT = "{YELLOW}[{cwd}] {BLUE}{curr_branch} {GREEN}$ "
+# 右にbranch情報
+$RIGHT_PROMPT = ""
+
+# .xonshrc
+aliases['cxrc'] = 'code ~/.xonshrc'
+aliases['sxrc'] = 'source ~/.xonshrc'
+
+# ls
+aliases['la'] = 'ls -a'
+
+# s3
+aliases['sss'] = 'aws s3'
+aliases['sssnd'] = 'aws s3 --profile=nttd'
+aliases['sssp'] = 'aws s3 --profile=pig'
+aliases['sssnp'] = 'aws s3 --profile=newpig'
+
+# ssh
+aliases['sshwiring'] = 'ssh -i ~/.ssh/dev-chuden-wiring.pem -L 6008:localhost:6006'
+
+# scp
+aliases['scpwiring'] = 'scp -i ~/.ssh/dev-chuden-wiring.pem'
+
+# ライブラリの実行時import
+# https://vaaaaaanquish.hatenablog.com/entry/2017/12/26/190153
+# xonsh上で使うときがありそうなライブラリはlazyasdで補完時、実行時に読み込み
+from xonsh.lazyasd import lazyobject
+import importlib
+lazy_module_dict = {
+    'sys': 'sys',
+    'random': 'random',
+    'shutil': 'shutil',
+    'pd': 'pandas',
+    'np': 'numpy',
+    'requests': 'requests',
+    'os': 'os',
+    'plt': 'matplotlib.pyplot',
+    'Path': 'pathlib.Path',
+        }
+for k,v in lazy_module_dict.items():
+    t = f"@lazyobject\ndef {k}():\n    return importlib.import_module('{v}')"
+    exec(t)
+
