@@ -1,18 +1,18 @@
 # This is Git's per-user configuration file.
 [user]
-	name = Miyashita Yosuke
+    name = Miyashita Yosuke
 [core]
-	editor = code --wait
-	excludesfile = /Users/miyashita/.gitignore_global
+    editor = code --wait
+    excludesfile = /Users/miyashita/.gitignore_global
 [diff]
-        tool = pycharm
+    tool = pycharm
 [difftool "pycharm"]
-        cmd = /usr/local/bin/charm diff "$LOCAL" "$REMOTE" && echo "Press enter to continue..." && read
+    cmd = /usr/local/bin/charm diff "$LOCAL" "$REMOTE" && echo "Press enter to continue..." && read
 [merge]
-        tool = pycharm
+    tool = pycharm
 [mergetool "pycharm"]
-        cmd = /usr/local/bin/charm merge "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
-        keepBackup = false
+    cmd = /usr/local/bin/charm merge "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+    keepBackup = false
 [alias]
     alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
     b = branch -a
