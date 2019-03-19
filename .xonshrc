@@ -2,9 +2,7 @@ $PATH.append("/usr/local/bin")
 $PATH.append("/Users/miyashita/.nodebrew/current/bin")
 
 # プロンプト上には場所だけ出す
-$PROMPT = "{YELLOW}[{cwd}] {BLUE}{curr_branch} {GREEN}$ "
-# 右にbranch情報
-$RIGHT_PROMPT = ""
+$PROMPT = "{YELLOW}[{cwd}] {CYAN}{curr_branch} {GREEN}$ "
 
 # .xonshrc
 aliases['cxrc'] = 'code ~/.xonshrc'
