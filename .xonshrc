@@ -10,6 +10,7 @@ aliases['sxrc'] = 'source ~/.xonshrc'
 
 # ls
 aliases['la'] = 'ls -a'
+aliases['ll'] = 'ls -la'
 
 # s3
 aliases['sss'] = 'aws s3'
