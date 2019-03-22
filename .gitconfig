@@ -17,6 +17,7 @@
     alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
     b = branch -a
     br = browse-remote
+    bdel = branch -D
     ci = commit 
     co = checkout
     d = difftool -dy
