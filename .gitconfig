@@ -20,6 +20,7 @@
     bdel = branch -D
     ci = commit 
     co = checkout
+    cob = checkout -b
     d = difftool -dy
     dc = diff --cached
     di = diff   
