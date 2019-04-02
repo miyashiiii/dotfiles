@@ -19,10 +19,11 @@ aliases['sssp'] = 'aws s3 --profile=pig'
 aliases['sssnp'] = 'aws s3 --profile=newpig'
 
 # ssh
-aliases['sshwiring'] = 'ssh -i ~/.ssh/dev-chuden-wiring.pem -L 6008:localhost:6006'
+aliases['sshoil'] = 'ssh -i ~/.ssh/dev-chuden-wiring.pem -L 6008:localhost:6006'
+aliases['sshoil2'] = 'ssh -i ~/.ssh/dev-chuden-wiring.pem -L 6009:localhost:6006'
 
 # scp
-aliases['scpwiring'] = 'scp -i ~/.ssh/dev-chuden-wiring.pem'
+aliases['scpoil'] = 'scp -i ~/.ssh/dev-chuden-wiring.pem'
 
 # ライブラリの実行時import
 # https://vaaaaaanquish.hatenablog.com/entry/2017/12/26/190153
