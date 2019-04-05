@@ -1,9 +1,10 @@
 # This is Git's per-user configuration file.
 [user]
     name = Miyashita Yosuke
+[includeIf "gitdir:~/Works/"]
+    path = ~/.gitconfig-work
 [core]
-    editor = code --wait
-    excludesfile = /Users/miyashita/.gitignore_global
+    excludesfile = ~/.gitignore_global
 [diff]
     tool = pycharm
 [difftool "pycharm"]
