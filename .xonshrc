@@ -14,9 +14,6 @@ aliases['ll'] = 'ls -la'
 
 # s3
 aliases['sss'] = 'aws s3'
-aliases['sssnd'] = 'aws s3 --profile=nttd'
-aliases['sssp'] = 'aws s3 --profile=pig'
-aliases['sssnp'] = 'aws s3 --profile=newpig'
 
 # ssh
 aliases['sshoil'] = 'ssh -i ~/.ssh/dev-chuden-wiring.pem -L 6008:localhost:6006'
@@ -24,6 +21,9 @@ aliases['sshoil2'] = 'ssh -i ~/.ssh/dev-chuden-wiring.pem -L 6009:localhost:6006
 
 # scp
 aliases['scpoil'] = 'scp -i ~/.ssh/dev-chuden-wiring.pem'
+
+# ディレクトリ名を入力すればCDできる
+$AUTO_CD = True
 
 # ライブラリの実行時import
 # https://vaaaaaanquish.hatenablog.com/entry/2017/12/26/190153
