@@ -1,16 +1,21 @@
 $PATH.append("/usr/local/bin")
 $PATH.append("/Users/miyashita/.nodebrew/current/bin")
 
+$DOTFILES = f'{$HOME}/dotfiles'
+
+import .xonshrc_work
+
 # プロンプト上には場所だけ出す
 $PROMPT = "{YELLOW}[{cwd}] {CYAN}{curr_branch} {GREEN}$ "
 
 # .xonshrc
-aliases['cxrc'] = 'code ~/.xonshrc'
-aliases['sxrc'] = 'source ~/.xonshrc'
+aliases['sx'] = 'source ~/.xonshrc'
+aliases['vx'] = 'vi ~/.xonshrc'
 
 # ls
 aliases['la'] = 'ls -a'
 aliases['ll'] = 'ls -la'
+aliases['ls'] = 'la' if $PWD == $DOTFILES else 'ls'
 
 # s3
 aliases['sss'] = 'aws s3'
@@ -21,6 +26,9 @@ aliases['sshoil2'] = 'ssh -i ~/.ssh/dev-chuden-wiring.pem -L 6009:localhost:6006
 
 # scp
 aliases['scpoil'] = 'scp -i ~/.ssh/dev-chuden-wiring.pem'
+
+# cd
+aliases['df'] = f'cd {$DOTFILES}'
 
 # ディレクトリ名を入力すればCDできる
 $AUTO_CD = True
