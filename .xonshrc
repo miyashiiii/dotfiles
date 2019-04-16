@@ -3,8 +3,6 @@ $PATH.append("/Users/miyashita/.nodebrew/current/bin")
 
 $DOTFILES = f'{$HOME}/dotfiles'
 
-import .xonshrc_work
-
 # プロンプト上には場所だけ出す
 $PROMPT = "{YELLOW}[{cwd}] {CYAN}{curr_branch} {GREEN}$ "
 
@@ -13,9 +11,9 @@ aliases['sx'] = 'source ~/.xonshrc'
 aliases['vx'] = 'vi ~/.xonshrc'
 
 # ls
+aliases['ls'] = 'ls -G'
 aliases['la'] = 'ls -a'
 aliases['ll'] = 'ls -la'
-aliases['ls'] = 'la' if $PWD == $DOTFILES else 'ls'
 
 # s3
 aliases['sss'] = 'aws s3'
@@ -53,3 +51,6 @@ for k,v in lazy_module_dict.items():
     t = f"@lazyobject\ndef {k}():\n    return importlib.import_module('{v}')"
     exec(t)
 
+# @events.on_chdir
+# def auto_ls(olddir, newdir, **kw):
+#     ls
