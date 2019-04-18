@@ -6,9 +6,10 @@ $DOTFILES = f'{$HOME}/dotfiles'
 # プロンプト上には場所だけ出す
 $PROMPT = "{YELLOW}[{cwd}] {CYAN}{curr_branch} {GREEN}$ "
 
-# .xonshrc
+# rc
 aliases['sx'] = 'source ~/.xonshrc'
 aliases['vx'] = 'vi ~/.xonshrc'
+aliases['vv'] = 'vi ~/.vimrc'
 
 # ls
 aliases['ls'] = 'ls -G'
