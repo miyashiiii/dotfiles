@@ -1,19 +1,19 @@
 # This is Git's per-user configuration file.
 [user]
     name = Miyashita Yosuke
+    email = dev.miyashiiii@gmail.com
 [includeIf "gitdir:~/Works/"]
     path = ~/.gitconfig-work
 [core]
     excludesfile = ~/.gitignore_global
 [diff]
-    tool = pycharm
-[difftool "pycharm"]
-    cmd = /usr/local/bin/charm diff "$LOCAL" "$REMOTE" && echo "Press enter to continue..." && read
+    tool = vimdiff
+[difftool "vimdiff"]
+    prompt = false
 [merge]
-    tool = pycharm
-[mergetool "pycharm"]
-    cmd = /usr/local/bin/charm merge "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
-    keepBackup = false
+    tool = vimdiff
+[mergetool "vimdiff"]
+    prompt = false
 [alias]
     alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
     b = branch -a
