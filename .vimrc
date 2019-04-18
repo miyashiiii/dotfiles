@@ -17,8 +17,8 @@ if dein#load_state('~/.cache/dein')
   call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
   " Add or remove your plugins here like this:
-  "call dein#add('Shougo/neosnippet.vim')
-  "call dein#add('Shougo/neosnippet-snippets')
+  call dein#add('davidhalter/jedi-vim')
+  call dein#add('ervandew/supertab')
 
   " Required:
   call dein#end()
@@ -36,7 +36,12 @@ endif
 
 "End dein Scripts-------------------------
 
-syntax enable
+" jedi-vim
+autocmd FileType python setlocal completeopt-=preview
+
+" supertab
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
 " markdownのハイライトを有効にする
 set syntax=markdown
 au BufRead,BufNewFile *.md set filetype=markdown
@@ -44,3 +49,8 @@ au BufRead,BufNewFile *.md set filetype=markdown
 " 行挿入後挿入モードに移行しない
 nnoremap o o<Esc>
 nnoremap O O<Esc>
+
+" Insertモードのときカーソルの形状を変更
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+inoremap <Esc> <Esc>
