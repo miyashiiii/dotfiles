@@ -26,7 +26,7 @@ aliases['sshoil2'] = 'ssh -i ~/.ssh/dev-chuden-wiring.pem -L 6009:localhost:6006
 aliases['scpoil'] = 'scp -i ~/.ssh/dev-chuden-wiring.pem'
 
 # cd
-aliases['df'] = f'cd {$DOTFILES}'
+aliases['cdf'] = f'cd {$DOTFILES}'
 
 # ディレクトリ名を入力すればCDできる
 $AUTO_CD = True
