@@ -7,13 +7,13 @@
 [core]
     excludesfile = ~/.gitignore_global
 [diff]
-    tool = vimdiff
-[difftool "vimdiff"]
-    prompt = false
+    tool = charm
+[difftool "charm"]
+    cmd = charm diff "$LOCAL" "$REMOTE"
 [merge]
     tool = vimdiff
-[mergetool "vimdiff"]
-    prompt = false
+[mergetool "charm"]
+    cmd = charm merge "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
 [alias]
     alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
     b = branch -a
@@ -38,3 +38,5 @@
     poh = push origin head
     fo = fetch --prune origin
     fu = fetch --prune upstream
+[fetch]
+	prune = true
