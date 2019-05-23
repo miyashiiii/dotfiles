@@ -9,7 +9,7 @@
 [diff]
     tool = charm
 [difftool "charm"]
-    cmd = charm diff "$LOCAL" "$REMOTE"
+    cmd = charm diff "$LOCAL" "$REMOTE" && read
 [merge]
     tool = vimdiff
 [mergetool "charm"]
