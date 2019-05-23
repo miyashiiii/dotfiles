@@ -28,6 +28,11 @@ aliases['scpoil'] = 'scp -i ~/.ssh/dev-chuden-wiring.pem'
 
 # cd
 aliases['cdf'] = f'cd {$DOTFILES}'
+aliases['til'] = f'cd {$HOME}/playground/til'
+
+
+# vox
+xontrib load vox
 
 # ディレクトリ名を入力すればCDできる
 $AUTO_CD = True
