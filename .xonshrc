@@ -1,5 +1,6 @@
 $PATH.append("/usr/local/bin")
 $PATH.append("/Users/miyashita/.nodebrew/current/bin")
+$PATH.append("/usr/local/octave/3.8.0/bin")
 
 $DOTFILES = f'{$HOME}/dotfiles'
 
@@ -36,6 +37,14 @@ xontrib load vox
 
 # ディレクトリ名を入力すればCDできる
 $AUTO_CD = True
+
+# シンボリックリンク作成
+def _lndf(args):
+    if len(args) != 1:
+        print('usage: lndf filename') 
+	return
+    $(ln -sf ~/dotfiles/@(args[0]) ~/@(args[0]))
+aliases['lndf'] = _lndf
 
 # ライブラリの実行時import
 # https://vaaaaaanquish.hatenablog.com/entry/2017/12/26/190153
