@@ -11,7 +11,7 @@
 [difftool "charm"]
     cmd = charm diff "$LOCAL" "$REMOTE" && read
 [merge]
-    tool = vimdiff
+    tool = charm
 [mergetool "charm"]
     cmd = charm merge "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
 [alias]
