@@ -31,6 +31,13 @@ aliases['scpoil'] = 'scp -i ~/.ssh/dev-chuden-wiring.pem'
 aliases['cdf'] = f'cd {$DOTFILES}'
 aliases['til'] = f'cd {$HOME}/playground/til'
 
+# 日報
+import datetime
+def _nippo():
+    n = datetime.datetime.now()
+    weekdays = ["月","火","水","木","金","土","日",]
+    return f"【日報】{n.year}年{n.month:02}月{n.day:02}日({weekdays[n.weekday()]}) 宮下"
+aliases['nippo'] = _nippo
 
 # vox
 xontrib load vox
