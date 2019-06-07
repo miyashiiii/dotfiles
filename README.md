@@ -1,2 +1,5 @@
 # dotfiles
-`ln -sf ~/dotfiles/{filename} ~/{filename}`
+## Create symbolic link at $HOME
+`lndf {filename}`
+
+example: `lndf .xonshrc`
