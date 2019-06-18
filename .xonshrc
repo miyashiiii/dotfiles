@@ -27,11 +27,11 @@ aliases['ll'] = 'ls -la'
 aliases['sss'] = 'aws s3'
 
 # ssh
-aliases['sshoil'] = 'ssh -i ~/.ssh/dev-chuden-wiring.pem -L 6008:localhost:6006'
-aliases['sshoil2'] = 'ssh -i ~/.ssh/dev-chuden-wiring.pem -L 6009:localhost:6006'
+aliases['ssh'] = 'ssh -i ~/.ssh/miya-work.pem -L 6008:localhost:6006'
+aliases['ssh2'] = 'ssh -i ~/.ssh/miya-work.pem -L 6009:localhost:6006'
 
 # scp
-aliases['scpoil'] = 'scp -i ~/.ssh/dev-chuden-wiring.pem'
+aliases['scp'] = 'scp -i ~/.ssh/miya-work.pem'
 
 # cd
 aliases['cdf'] = f'cd {$DOTFILES}'
