@@ -13,7 +13,13 @@ aliases['vx'] = 'vi ~/.xonshrc'
 aliases['vv'] = 'vi ~/.vimrc'
 
 # ls
-aliases['ls'] = 'ls -G'
+def _ls(args):
+    args = args[0].replace('-', '') if args else ''
+    if $(pwd).rstrip(os.linesep) == $DOTFILES:
+        $(which -s ls) @(f"-{''.join(set(args + 'aG'))}")
+    else:
+        $(which -s ls) @(f"-{''.join(set(args + 'G'))}")
+aliases['ls'] = _ls
 aliases['la'] = 'ls -a'
 aliases['ll'] = 'ls -la'
 
