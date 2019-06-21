@@ -9,7 +9,7 @@
 [diff]
     tool = charm
 [difftool "charm"]
-    cmd = charm diff "$LOCAL" "$REMOTE" && read
+    cmd = charm diff "$LOCAL" "$REMOTE" && echo "Press enter to continue..." && read
 [merge]
     tool = charm
 [mergetool "charm"]
