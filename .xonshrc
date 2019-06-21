@@ -44,6 +44,7 @@ def _nippo():
     weekdays = ["月","火","水","木","金","土","日",]
     nippo_str = f"【日報】{n.year}年{n.month:02}月{n.day:02}日({weekdays[n.weekday()]}) 宮下"
     $(echo -n @(nippo_str) | pbcopy) 
+    print(f"copy to clipboard: {nippo_str}")
 aliases['nippo'] = _nippo
 
 # vox
