@@ -81,6 +81,3 @@ for k,v in lazy_module_dict.items():
     t = f"@lazyobject\ndef {k}():\n    return importlib.import_module('{v}')"
     exec(t)
 
-# @events.on_chdir
-# def auto_ls(olddir, newdir, **kw):
-#     ls
