@@ -1,9 +1,10 @@
+source ~/.xonshrc-work
+
 $PATH.append("/usr/local/bin")
 $PATH.append("/Users/miyashita/.nodebrew/current/bin")
 $PATH.append("/usr/local/octave/3.8.0/bin")
 
 $DOTFILES = f'{$HOME}/dotfiles'
-
 # プロンプト上には場所だけ出す
 $PROMPT = "{YELLOW}[{cwd}] {CYAN}{curr_branch} {GREEN}$ "
 
@@ -35,7 +36,7 @@ aliases['scp'] = 'scp -i ~/.ssh/miya-work.pem'
 
 # cd
 aliases['cdf'] = f'cd {$DOTFILES}'
-aliases['til'] = f'cd {$HOME}/playground/til'
+aliases['til'] = f'cd {$TIL}'
 
 # 日報
 import datetime
