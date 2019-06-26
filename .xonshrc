@@ -54,12 +54,28 @@ xontrib load vox
 # ディレクトリ名を入力すればCDできる
 $AUTO_CD = True
 
+# 各ファイルのシンボリックリンク作成
+from pathlib import Path
+def make_ln(filename):
+    $(ln -sf $DOTFILES/@(filename) $HOME/@(filename))
+
+ln_ignore = [
+        ".git",
+        ".git-ignore",
+        "README.md"
+        ]
+
+for filepath in Path($($DOTFILES)).glob("*"):
+    if filepath.name in ln_ignore:
+        continue
+    make_ln(filepath.name)
+
 # シンボリックリンク作成
 def _lndf(args):
     if len(args) != 1:
         print('usage: lndf filename') 
 	return
-    $(ln -sf ~/dotfiles/@(args[0]) $HOME/@(args[0]))
+    make_ln(args[0])
 aliases['lndf'] = _lndf
 
 # ライブラリの実行時import
@@ -81,4 +97,3 @@ lazy_module_dict = {
 for k,v in lazy_module_dict.items():
     t = f"@lazyobject\ndef {k}():\n    return importlib.import_module('{v}')"
     exec(t)
-
