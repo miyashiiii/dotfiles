@@ -65,7 +65,7 @@ ln_ignore = [
         "README.md"
         ]
 
-for filepath in Path($($DOTFILES)).glob("*"):
+for filepath in Path($DOTFILES).glob("*"):
     if filepath.name in ln_ignore:
         continue
     make_ln(filepath.name)
