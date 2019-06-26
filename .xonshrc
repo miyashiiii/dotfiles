@@ -92,7 +92,6 @@ lazy_module_dict = {
     'requests': 'requests',
     'os': 'os',
     'plt': 'matplotlib.pyplot',
-    'Path': 'pathlib.Path',
         }
 for k,v in lazy_module_dict.items():
     t = f"@lazyobject\ndef {k}():\n    return importlib.import_module('{v}')"
