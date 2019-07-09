@@ -17,7 +17,6 @@ if dein#load_state('~/.cache/dein')
   call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
   " Add or remove your plugins here like this:
-  call dein#add('davidhalter/jedi-vim')
   call dein#add('ervandew/supertab')
 
   " Required:
@@ -36,8 +35,6 @@ endif
 
 "End dein Scripts-------------------------
 
-" jedi-vim
-autocmd FileType python setlocal completeopt-=preview
 
 " supertab
 let g:SuperTabDefaultCompletionType = "<c-n>"
