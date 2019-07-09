@@ -38,6 +38,9 @@ aliases['scp'] = 'scp -i ~/.ssh/miya-work.pem'
 aliases['cdf'] = f'cd {$DOTFILES}'
 aliases['til'] = f'cd {$TIL}'
 
+# aws
+aliases['ec2ls'] = 'aws ec2 describe-instances --query "Reservations[*].Instances[0].{Name:Tags[?Key==`Name`].Value,PublicDnsName:PublicDnsName}" --filters "Name=tag:CreatedBy,Values=Y.Miyashita"'
+
 # 日報
 import datetime
 def _nippo():
