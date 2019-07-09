@@ -15,17 +15,21 @@
 [mergetool "charm"]
     cmd = charm merge "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
 [alias]
+    a = add
+    aa = add --all
     alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
     b = branch -a
     br = browse-remote
     bdel = branch -D
     ci = commit 
+    cim = commit -m
     co = checkout
     cob = checkout -b
     d = difftool -dy
     dc = diff --cached
     di = diff   
     dic = diff --cached
+    ds = diff --staged
     f = fetch --prune
     fs = !git f && git su
     ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >> .gitignore
