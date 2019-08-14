@@ -16,11 +16,19 @@ aliases['vv'] = 'vi ~/.vimrc'
 
 # ls
 def _ls(args):
-    args = args[0].replace('-', '') if args else ''
+    options = "" 
+    target_dir = ""
+    for arg in args:
+        if "-" in arg:
+            options = arg.replace('-', '')
+        else:
+            target_dir = arg
+    if target_dir == "":
+        target_dir = "."
     if $(pwd).rstrip(os.linesep) == $DOTFILES:
-        $(which -s ls) @(f"-{''.join(set(args + 'aG'))}")
+        $(which -s ls) @(f"-{''.join(set(options + 'aG'))}") @(target_dir)
     else:
-        $(which -s ls) @(f"-{''.join(set(args + 'G'))}")
+        $(which -s ls) @(f"-{''.join(set(options + 'G'))}") @(target_dir)
 aliases['ls'] = _ls
 aliases['la'] = 'ls -a'
 aliases['ll'] = 'ls -la'
@@ -48,6 +56,7 @@ aliases['ec2ls'] = 'aws ec2 describe-instances --query "Reservations[*].Instance
 
 # git 
 aliases['vg'] = 'vi ~/.gitconfig'
+aliases['vgi'] = 'vi .gitignore'
 aliases['ga'] = 'git a'
 aliases['gd'] = 'git d'
 aliases['gl'] = 'git l'
