@@ -41,6 +41,7 @@
     s = status --short --branch
     st = status 
     su = submodule update
+    p = push
     poh = push origin head
     fo = fetch --prune origin
     fu = fetch --prune upstream
