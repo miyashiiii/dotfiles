@@ -60,10 +60,19 @@ aliases['ec2ls'] = 'aws ec2 describe-instances --query "Reservations[*].Instance
 aliases['vg'] = 'vi ~/.gitconfig'
 aliases['vgi'] = 'vi .gitignore'
 aliases['ga'] = 'git a'
+aliases['gaa'] = 'git aa'
+aliases['gcim'] = 'git cim'
+aliases['gco'] = 'git co'
 aliases['gd'] = 'git d'
+aliases['gdc'] = 'git dc'
 aliases['gl'] = 'git l'
+aliases['gm'] = 'git m'
+aliases['gms'] = 'git ms'
+aliases['grs'] = 'git rs'
+aliases['grh'] = 'git rh'
 aliases['gs'] = 'git s'
 
+aliases['jn'] = 'jupyter notebook'
 aliases['pi'] = 'pip install'
 
 # 日報
@@ -142,7 +151,7 @@ def _imgls(args):
     parser.add_argument("-r", const="random", action="store_const")
     args = parser.parse_args(args)
 
-    
+
     fig, ax = plt.subplots(3, 3, sharex='col', sharey='row')
     fig.set_size_inches(10, 10)
     d=[]
