@@ -1,12 +1,5 @@
 source ~/.xonshrc-work
 
-$PATH.append("/bin")
-$PATH.append("/usr/bin")
-$PATH.append("/usr/local/bin")
-$PATH.append("/Users/miyashita/.nodebrew/current/bin")
-$PATH.append("/usr/local/octave/3.8.0/bin")
-$PATH.append("~/.npm-global/bin")
-
 $DOTFILES = f'{$HOME}/dotfiles'
 # プロンプト上には場所だけ出す
 $PROMPT = "{YELLOW}[{cwd}] {CYAN}{curr_branch} {GREEN}$ "
