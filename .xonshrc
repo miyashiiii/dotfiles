@@ -120,3 +120,40 @@ lazy_module_dict = {
 for k,v in lazy_module_dict.items():
     t = f"@lazyobject\ndef {k}():\n    return importlib.import_module('{v}')"
     exec(t)
+
+import matplotlib
+import matplotlib.pyplot as plt
+import xontrib.mplhooks
+import numpy as np
+import cv2
+import random
+from mimetypes import guess_extension
+
+import argparse
+
+matplotlib.use("agg")
+def _imgls(args):
+    parser  = argparse.ArgumentParser()
+    parser.add_argument("dir", default=".", nargs="?")
+    parser.add_argument("-r", const="random", action="store_const")
+    args = parser.parse_args(args)
+
+    
+    fig, ax = plt.subplots(3, 3, sharex='col', sharey='row')
+    fig.set_size_inches(10, 10)
+    d=[]
+    for path in Path(args.dir).iterdir():
+        if path.suffix in ('.jpg', '.jpeg', '.png'):
+            d.append(path)
+    if len(d)==0:
+        return
+    if len(d)>9:
+        d = random.sample(d, 9) if args.r is not None else d[:9]
+    for i, imgid in enumerate(d):
+        col = i % 3
+        row = i // 3
+        img = cv2.imread(str(imgid))
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        ax[row, col].imshow(img)
+    xontrib.mplhooks.display_figure_with_iterm2(fig)
+aliases['imgls'] = _imgls
