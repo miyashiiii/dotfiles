@@ -1,5 +1,7 @@
 source ~/.xonshrc-work
 
+$PATH.append("/bin")
+$PATH.append("/usr/bin")
 $PATH.append("/usr/local/bin")
 $PATH.append("/Users/miyashita/.nodebrew/current/bin")
 $PATH.append("/usr/local/octave/3.8.0/bin")
@@ -61,6 +63,8 @@ aliases['ga'] = 'git a'
 aliases['gd'] = 'git d'
 aliases['gl'] = 'git l'
 aliases['gs'] = 'git s'
+
+aliases['pi'] = 'pip install'
 
 # 日報
 import datetime
