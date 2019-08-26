@@ -4,10 +4,14 @@ $DOTFILES = f'{$HOME}/dotfiles'
 # プロンプト上には場所だけ出す
 $PROMPT = "{YELLOW}[{cwd}] {CYAN}{curr_branch} {GREEN}$ "
 
+# my aliases dict
+als ={}
+
 # rc
-aliases['sx'] = 'source ~/.xonshrc'
-aliases['vx'] = 'vi ~/.xonshrc'
-aliases['vv'] = 'vi ~/.vimrc'
+als['sx'] = 'source ~/.xonshrc'
+als['vx'] = 'vi ~/.xonshrc'
+als['vv'] = 'vi ~/.vimrc'
+als['vz'] = 'vi ~/.zshrc'
 
 # ls
 def _ls(args):
@@ -24,52 +28,54 @@ def _ls(args):
         $(which -s ls) @(f"-{''.join(set(options + 'aG'))}") @(target_dir)
     else:
         $(which -s ls) @(f"-{''.join(set(options + 'G'))}") @(target_dir)
-aliases['ls'] = _ls
-aliases['la'] = 'ls -a'
-aliases['ll'] = 'ls -la'
+als['ls'] = _ls
+als['la'] = 'ls -a'
+als['ll'] = 'ls -la'
 
 # s3
-aliases['sss'] = 'aws s3'
+als['sss'] = 'aws s3'
 
 # ssh
-aliases['ssh'] = 'ssh -i ~/.ssh/miya-work.pem -L 6008:localhost:6006'
-aliases['ssh2'] = 'ssh -i ~/.ssh/miya-work.pem -L 6009:localhost:6006'
+als['ssh'] = 'ssh -i ~/.ssh/miya-work.pem -L 6008:localhost:6006'
+als['ssh2'] = 'ssh -i ~/.ssh/miya-work.pem -L 6009:localhost:6006'
 
 # scp
-aliases['scp'] = 'scp -i ~/.ssh/miya-work.pem'
+als['scp'] = 'scp -i ~/.ssh/miya-work.pem'
 
 # cd
-aliases['cdf'] = f'cd {$DOTFILES}'
-aliases['til'] = f'cd {$TIL}'
+als['cdf'] = f'cd {$DOTFILES}'
+als['til'] = f'cd {$TIL}'
 
 # img
-aliases['ic'] = 'imgcat'
-aliases['il'] = 'imgls'
+als['ic'] = 'imgcat'
+als['il'] = 'imgls'
 
 # aws
-aliases['ec2ls'] = 'aws ec2 describe-instances --query "Reservations[*].Instances[0].{Name:Tags[?Key==`Name`].Value,PublicDnsName:PublicDnsName}" --filters "Name=tag:CreatedBy,Values=Y.Miyashita"'
+als['ec2ls'] = 'aws ec2 describe-instances --query "Reservations[*].Instances[0].{Name:Tags[?Key==`Name`].Value,PublicDnsName:PublicDnsName}" --filters "Name=tag:CreatedBy,Values=Y.Miyashita"'
 
 # git 
-aliases['vg'] = 'vi ~/.gitconfig'
-aliases['vgi'] = 'vi .gitignore'
-aliases['ga'] = 'git a'
-aliases['gaa'] = 'git aa'
-aliases['gcim'] = 'git cim'
-aliases['gco'] = 'git co'
-aliases['gd'] = 'git d'
-aliases['gdc'] = 'git dc'
-aliases['gl'] = 'git l'
-aliases['gm'] = 'git m'
-aliases['gms'] = 'git ms'
-aliases['gmt'] = 'git mt'
-aliases['gp'] = 'git p'
-aliases['gpoh'] = 'git poh'
-aliases['grs'] = 'git rs'
-aliases['grh'] = 'git rh'
-aliases['gs'] = 'git s'
+als['vg'] = 'vi ~/.gitconfig'
+als['vgi'] = 'vi .gitignore'
+als['ga'] = 'git a'
+als['gaa'] = 'git aa'
+als['gcim'] = 'git cim'
+als['gco'] = 'git co'
+als['gd'] = 'git d'
+als['gdc'] = 'git dc'
+als['gl'] = 'git l'
+als['gm'] = 'git m'
+als['gms'] = 'git ms'
+als['gmt'] = 'git mt'
+als['gp'] = 'git p'
+als['gpoh'] = 'git poh'
+als['grs'] = 'git rs'
+als['grh'] = 'git rh'
+als['gs'] = 'git s'
 
-aliases['jn'] = 'jupyter notebook'
-aliases['pi'] = 'pip install'
+# other
+als['jn'] = 'jupyter notebook'
+als['pi'] = 'pip install'
+als['lc'] = 'ls -1 | wc -l'
 
 # 日報
 import datetime
@@ -166,3 +172,27 @@ def _imgls(args):
         ax[row, col].imshow(img)
     xontrib.mplhooks.display_figure_with_iterm2(fig)
 aliases['imgls'] = _imgls
+
+def _aliases_to_zshrc():
+    zrc_path = f"{$HOME}/.zshrc"
+    with open(zrc_path, mode="r") as f:
+        lines = f.readlines()
+    start_l_idx = int(lines.index('# aliases from xsh start\n'))
+    end_l_idx = int(lines.index('# aliases from xsh end\n'))
+    del lines[start_l_idx+1:end_l_idx]
+    ignore_keys =["sx"]
+    idx_count = start_l_idx + 1
+    for item in als.items():
+        k, v = item
+        if isinstance(v, str) and k not in ignore_keys:
+            new_line = f"alias {k}='{v}'\n"
+
+            lines.insert(idx_count, new_line)
+            idx_count += 1
+
+    with open(zrc_path, mode="w") as f:
+        f.writelines(lines)
+
+aliases.update(als)           
+aliases['atz'] = _aliases_to_zshrc()
+
