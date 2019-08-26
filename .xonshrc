@@ -70,6 +70,7 @@ for alias_str in git_aliases:
 als['jn'] = 'jupyter notebook'
 als['pi'] = 'pip install'
 als['lc'] = 'ls -1 | wc -l'
+als['x'] = 'xonsh'
 
 # 日報
 import datetime

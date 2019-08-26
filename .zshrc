@@ -62,6 +62,7 @@ alias gsu='git su'
 alias jn='jupyter notebook'
 alias pi='pip install'
 alias lc='ls -1 | wc -l'
+alias x='xonsh'
 # aliases from xsh end
 
 PROMPT='[%c]  $ '
