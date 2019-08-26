@@ -191,3 +191,7 @@ def _aliases_to_zshrc():
 aliases.update(als)           
 aliases['atz'] = _aliases_to_zshrc()
 
+def _switch_show_traceback():
+    $XONSH_SHOW_TRACEBACK = not($XONSH_SHOW_TRACEBACK)
+    print("$XONSH_SHOW_TRACEBACK: ", $XONSH_SHOW_TRACEBACK)
+aliases['sst'] = _switch_show_traceback
