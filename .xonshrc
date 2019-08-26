@@ -56,21 +56,15 @@ als['ec2ls'] = 'aws ec2 describe-instances --query "Reservations[*].Instances[0]
 # git 
 als['vg'] = 'vi ~/.gitconfig'
 als['vgi'] = 'vi .gitignore'
-als['ga'] = 'git a'
-als['gaa'] = 'git aa'
-als['gcim'] = 'git cim'
-als['gco'] = 'git co'
-als['gd'] = 'git d'
-als['gdc'] = 'git dc'
-als['gl'] = 'git l'
-als['gm'] = 'git m'
-als['gms'] = 'git ms'
-als['gmt'] = 'git mt'
-als['gp'] = 'git p'
-als['gpoh'] = 'git poh'
-als['grs'] = 'git rs'
-als['grh'] = 'git rh'
-als['gs'] = 'git s'
+als['g'] = 'git'
+
+git_aliases = $(git alias).split("\n")
+for alias_str in git_aliases:
+    split =alias_str.split()
+    if len(split) == 0:
+        continue
+    alias = split[0]
+    als[f"g{alias}"] = f"git {alias}"
 
 # other
 als['jn'] = 'jupyter notebook'

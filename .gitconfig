@@ -21,6 +21,8 @@
     b = branch -a
     br = browse-remote
     bdel = branch -D
+    ca = commit -a
+    cam = commit -am
     ci = commit 
     cim = commit -m
     co = checkout
@@ -43,6 +45,7 @@
     st = status 
     su = submodule update
     p = push
+    pl = pull
     poh = push origin head
     fo = fetch --prune origin
     fu = fetch --prune upstream
