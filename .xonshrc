@@ -175,15 +175,13 @@ def _aliases_to_zshrc():
     end_l_idx = int(lines.index('# aliases from xsh end\n'))
     del lines[start_l_idx+1:end_l_idx]
     ignore_keys =["sx"]
-    idx_count = start_l_idx + 1
+    alias_lines = []
     for item in als.items():
         k, v = item
         if isinstance(v, str) and k not in ignore_keys:
             new_line = f"alias {k}='{v}'\n"
-
-            lines.insert(idx_count, new_line)
-            idx_count += 1
-
+            alias_lines.append(new_line)
+    lines[start_l_idx+1:start_l_idx+1]=alias_lines
     with open(zrc_path, mode="w") as f:
         f.writelines(lines)
 
