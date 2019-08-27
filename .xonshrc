@@ -1,6 +1,6 @@
 source ~/.xonshrc-work
 
-$DOTFILES = f'{$HOME}/dotfiles'
+$DOTFILES = '~/dotfiles'
 # プロンプト上には場所だけ出す
 $PROMPT = "{YELLOW}[{cwd}] {CYAN}{curr_branch} {GREEN}$ "
 
@@ -44,7 +44,6 @@ als['scp'] = 'scp -i ~/.ssh/miya-work.pem'
 
 # cd
 als['cdf'] = f'cd {$DOTFILES}'
-als['til'] = f'cd {$TIL}'
 
 # img
 als['ic'] = 'imgcat'
