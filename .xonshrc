@@ -133,10 +133,8 @@ for k,v in lazy_module_dict.items():
 import matplotlib
 import matplotlib.pyplot as plt
 import xontrib.mplhooks
-import numpy as np
 import cv2
 import random
-from mimetypes import guess_extension
 
 import argparse
 
@@ -168,25 +166,15 @@ def _imgls(args):
 aliases['imgls'] = _imgls
 
 def _aliases_to_zshrc():
-    zrc_path = f"{$HOME}/.zshrc"
-    with open(zrc_path, mode="r") as f:
-        lines = f.readlines()
-    start_l_idx = int(lines.index('# aliases from xsh start\n'))
-    end_l_idx = int(lines.index('# aliases from xsh end\n'))
-    del lines[start_l_idx+1:end_l_idx]
+    zrc_alias_path = f"{$HOME}/.zsh_alias"
     ignore_keys =["sx"]
-    alias_lines = []
-    for item in als.items():
-        k, v = item
-        if isinstance(v, str) and k not in ignore_keys:
-            new_line = f"alias {k}='{v}'\n"
-            alias_lines.append(new_line)
-    lines[start_l_idx+1:start_l_idx+1]=alias_lines
-    with open(zrc_path, mode="w") as f:
+    lines = [f"alias {k}='{v}'\n" for k, v in als.items() if isinstance(v, str) and k not in ignore_keys]
+    print(lines)
+    with open(zrc_alias_path, mode="w") as f:
         f.writelines(lines)
 
 aliases.update(als)           
-aliases['atz'] = _aliases_to_zshrc()
+aliases['atz'] = _aliases_to_zshrc
 
 def _switch_show_traceback():
     $XONSH_SHOW_TRACEBACK = not($XONSH_SHOW_TRACEBACK)
