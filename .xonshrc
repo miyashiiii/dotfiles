@@ -81,6 +81,28 @@ def _nippo():
     print(f"copy to clipboard: {nippo_str}")
 aliases['nippo'] = _nippo
 
+def _timediff(args):
+   """
+   command example: `timediff 11:35 - 19:15`
+   args example: ["11:35", -, "19:15"]
+   """
+    time1, _,  time2 = args
+
+    h1, m1 = time1.split(":")
+    h2, m2 = time2.split(":")
+    h1,h2,m1,m2 = [int(s) for s in [h1,h2,m1,m2]]
+
+    h = h2 - h1
+    if m2 > m1:
+        m = m2 - m1
+    else:
+        m = m2 - m1 + 60
+        h -= 1 
+    
+    print(f"{h:02}:{m:02}")
+
+aliases['timediff'] = _timediff
+
 # vox
 xontrib load vox
 
