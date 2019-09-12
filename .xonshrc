@@ -24,7 +24,7 @@ def _ls(args):
             target_dir = arg
     if target_dir == "":
         target_dir = "."
-    if $(pwd).rstrip(os.linesep) == $DOTFILES:
+    if $(pwd).rstrip(os.linesep) == os.path.expanduser($DOTFILES):
         $(which -s ls) @(f"-{''.join(set(options + 'aG'))}") @(target_dir)
     else:
         $(which -s ls) @(f"-{''.join(set(options + 'G'))}") @(target_dir)
