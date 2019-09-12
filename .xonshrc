@@ -82,10 +82,10 @@ def _nippo():
 aliases['nippo'] = _nippo
 
 def _timediff(args):
-   """
-   command example: `timediff 11:35 - 19:15`
-   args example: ["11:35", -, "19:15"]
-   """
+    """
+    command example: `timediff 11:35 - 19:15`
+    args example: ["11:35", -, "19:15"]
+    """
     time1, _,  time2 = args
 
     h1, m1 = time1.split(":")
