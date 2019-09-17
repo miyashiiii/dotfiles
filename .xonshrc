@@ -86,6 +86,7 @@ def _timediff(args):
     command example: `timediff 11:35 - 19:15`
     args example: ["11:35", -, "19:15"]
     """
+    break_h = 1
     time1, _,  time2 = args
 
     h1, m1 = time1.split(":")
@@ -93,12 +94,12 @@ def _timediff(args):
     h1,h2,m1,m2 = [int(s) for s in [h1,h2,m1,m2]]
 
     h = h2 - h1
-    if m2 > m1:
+    if m2 >= m1:
         m = m2 - m1
     else:
         m = m2 - m1 + 60
         h -= 1 
-    
+    h -= break_h 
     print(f"{h:02}:{m:02}")
 
 aliases['timediff'] = _timediff
