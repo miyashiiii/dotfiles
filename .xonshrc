@@ -43,6 +43,7 @@ als['ssh2'] = 'ssh -i ~/.ssh/miya-work.pem -L 6009:localhost:6006'
 als['scp'] = 'scp -i ~/.ssh/miya-work.pem'
 
 # cd
+als['c'] = 'cd'
 als['cdf'] = f'cd {$DOTFILES}'
 
 # img
