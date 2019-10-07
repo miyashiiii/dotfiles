@@ -13,6 +13,6 @@ export TERMINAL_APP=""
 
 source ~/.zsh_alias
 
-PROMPT='[%c]  $ '
+PROMPT='[%~]  $ '
 
 x
