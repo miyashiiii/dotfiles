@@ -46,6 +46,10 @@ als['scp'] = 'scp -i ~/.ssh/miya-work.pem'
 als['c'] = 'cd'
 als['cdf'] = f'cd {$DOTFILES}'
 
+@events.on_chdir
+def auto_ls(olddir, newdir, **kwargs):
+    ls
+
 # img
 als['ic'] = 'imgcat'
 als['il'] = 'imgls'
