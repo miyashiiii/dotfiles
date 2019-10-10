@@ -12,6 +12,7 @@ path=(
 export TERMINAL_APP="" 
 
 source ~/.zsh_alias
+alias sz="source ~/.zshrc"
 
 autoload -Uz vcs_info
 precmd () { vcs_info }
