@@ -54,3 +54,5 @@ inoremap <Esc> <Esc>
 
 " .xonshrcをpythonでハイライト
 au BufRead,BufNewFile *.xonshrc set filetype=python 
+
+set shiftwidth=2

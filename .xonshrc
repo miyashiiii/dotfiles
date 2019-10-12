@@ -70,6 +70,11 @@ for alias_str in git_aliases:
     alias = split[0]
     als[f"g{alias}"] = f"git {alias}"
 
+# ruby
+als['rsv'] = 'rails server'
+als['rts'] = 'rails test'
+als['rcs'] = 'rails console'
+
 # other
 als['jn'] = 'jupyter notebook'
 als['pi'] = 'pip install'
