@@ -17,6 +17,9 @@ export TERMINAL_APP=""
 source ~/.zsh_alias
 alias sz="source ~/.zshrc"
 
+setopt auto_cd
+function chpwd() { ls }
+
 autoload -Uz vcs_info
 precmd () { vcs_info }
 zstyle ':vcs_info:git:*' formats '%b'
