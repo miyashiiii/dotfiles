@@ -1,7 +1,9 @@
-xonshrc_work_path = "~/.xonshrc-work"
+xonshrc_work_name = ".xonshrc-work"
 from pathlib import Path
-if Path(xonshrc_work_path).is_file():
-    source @(xonshrc_work_path)
+print(Path(xonshrc_work_name).resolve())
+print(Path(xonshrc_work_name).exists())
+if Path(xonshrc_work_name).is_symlink():
+    source @(xonshrc_work_name)
 
 $DOTFILES = '~/dotfiles'
 # プロンプト上には場所だけ出す
