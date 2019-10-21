@@ -117,6 +117,9 @@ def _nippo():
     nippo_str = f"【日報】{n.year}年{n.month:02}月{n.day:02}日({weekdays[n.weekday()]}) 宮下"
     $(echo -n @(nippo_str) | pbcopy) 
     print(f"copy to clipboard: {nippo_str}")
+
+    timediff_str = input("timediff?: ")
+    _timediff(timediff_str.split())
 aliases['nippo'] = _nippo
 
 def _timediff(args):
