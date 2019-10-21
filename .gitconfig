@@ -5,6 +5,7 @@
 [includeIf "gitdir:~/Works/"]
     path = ~/.gitconfig-work
 [core]
+    editor = vim
     excludesfile = ~/.gitignore_global
 [diff]
     tool = charm
