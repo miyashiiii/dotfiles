@@ -1,4 +1,7 @@
-source ~/.xonshrc-work
+xonshrc_work_path = "~/.xonshrc-work"
+from pathlib import Path
+if Path(xonshrc_work_path).is_file():
+    source @(xonshrc_work_path)
 
 $DOTFILES = '~/dotfiles'
 # プロンプト上には場所だけ出す
