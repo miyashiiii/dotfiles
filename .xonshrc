@@ -78,6 +78,10 @@ als['rsv'] = 'rails server'
 als['rts'] = 'rails test'
 als['rcs'] = 'rails console'
 
+# python
+als['ve'] = 'python -m venv venv'
+als['ave'] = 'source ./venv/bin/activate'
+
 # other
 als['jn'] = 'jupyter notebook'
 als['pi'] = 'pip install'
