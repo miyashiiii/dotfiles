@@ -1,5 +1,6 @@
 export PYENV_ROOT="$HOME/.pyenv"
 path=(
+    /snap/bin
     $PYENV_ROOT/bin
     /usr/local/bin
     /usr/bin
