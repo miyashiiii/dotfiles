@@ -90,6 +90,25 @@ als['pi'] = 'pip install'
 als['lc'] = 'ls -1 | wc -l'
 als['x'] = 'xonsh'
 
+# bitwarden
+def _bwpassword(name):
+    password = $(bw get password @(name))
+    if 'locked' in password:
+        #TODO call bwunlock
+        print(password)
+        return
+    $(echo @(password.split()[0]) | pbcopy)
+als['bwpw'] = _bwpassword
+
+def _bwunlock():
+    print("Master password: [hidden]")
+    result = $(bw unlock)
+    if result.startswith("Invalid"):
+        print(result)
+        return 
+    $BW_SESSION = result.split()[-1]
+als['bwul']= _bwunlock
+
 # 日報
 import datetime
 def _nippo():
