@@ -1,4 +1,6 @@
+export PYENV_ROOT="$HOME/.pyenv"
 path=(
+    $PYENV_ROOT/bin
     /usr/local/bin
     /usr/bin
     /bin
@@ -6,8 +8,9 @@ path=(
     /usr/local/octave/3.8.0/bin
     ~/.npm-global/bin
     ~/.gem/ruby/2.0.0/bin
-    ~/.pyenv/versions/3.7.4/bin
 )
+
+eval "$(pyenv init -)"
 
 export TERMINAL_APP="" 
 
