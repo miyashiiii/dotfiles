@@ -18,22 +18,6 @@ als['vx'] = 'vi ~/.xonshrc'
 als['vv'] = 'vi ~/.vimrc'
 als['vz'] = 'vi ~/.zshrc'
 
-# ls
-def _ls(args):
-    options = "" 
-    target_dir = ""
-    for arg in args:
-        if "-" in arg:
-            options = arg.replace('-', '')
-        else:
-            target_dir = arg
-    if target_dir == "":
-        target_dir = "."
-    if $(pwd).rstrip(os.linesep) == os.path.expanduser($DOTFILES):
-        $(which -s ls) "--color" @(f"-{''.join(set(options + 'aG'))}") @(target_dir)
-    else:
-        $(which -s ls) "--color" @(f"-{''.join(set(options + 'G'))}") @(target_dir)
-als['ls'] = _ls
 als['la'] = 'ls -a'
 als['ll'] = 'ls -la'
 
