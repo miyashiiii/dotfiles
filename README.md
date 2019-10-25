@@ -6,7 +6,7 @@
 example: `lndf .xonshrc`
 
 
-## Installation for Ubuntu
+## init on Ubuntu
 ```bash
 sudo add-apt-repository ppa:jonathonf/vim
 sudo apt update
