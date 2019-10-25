@@ -1,7 +1,5 @@
 xonshrc_work_name = ".xonshrc-work"
 from pathlib import Path
-print(Path(xonshrc_work_name).resolve())
-print(Path(xonshrc_work_name).exists())
 if Path(xonshrc_work_name).is_symlink():
     source @(xonshrc_work_name)
 
