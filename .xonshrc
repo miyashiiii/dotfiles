@@ -37,7 +37,9 @@ def _sshub(args):
     print(f"port forward to {port}")
     ssh -i ~/.ssh/miya-work.pem -L @(port):localhost:6006 ubuntu@@(args[0])
 
+# als['sshub'] = 'ssh -i ~/.ssh/miya-work.pem -L 6008:localhost:6006'
 als['sshub'] = _sshub
+als['ssh2'] = 'ssh -i ~/.ssh/miya-work.pem -L 6009:localhost:6006'
 
 # scp
 als['scp'] = 'scp -i ~/.ssh/miya-work.pem'
@@ -55,7 +57,18 @@ als['ic'] = 'imgcat'
 als['il'] = 'imgls'
 
 # aws
-als['ec2ls'] = 'aws ec2 describe-instances --query "Reservations[*].Instances[0].{Name:Tags[?Key==`Name`].Value,PublicDnsName:PublicDnsName}" --filters "Name=tag:CreatedBy,Values=Y.Miyashita"'
+def _ec2ls_internal():
+    import json
+    result_json = $(aws ec2 describe-instances --query "Reservations[*].Instances[0].{Name:Tags[?Key==`Name`].Value,PublicDnsName:PublicDnsName}" --filters "Name=tag:CreatedBy,Values=Y.Miyashita")
+    result = json.loads(result_json)
+    instances = [(instance["Name"][0],instance["PublicDnsName"]) for instance in result]
+    return instances
+
+def _ec2ls(_):
+    results = _ec2ls_internal()
+    for k,v in results:
+        print(f"{k:25}:{v if v else 'stopped'}")
+als['ec2ls'] = _ec2ls
 
 # git 
 als['vg'] = 'vi ~/.gitconfig'
