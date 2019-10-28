@@ -4,8 +4,9 @@ if Path(xonshrc_work_name).is_symlink():
     source @(xonshrc_work_name)
 
 $DOTFILES = '~/dotfiles'
-# プロンプト上には場所だけ出す
+
 $PROMPT = "{YELLOW}[{cwd}] {CYAN}{curr_branch} {GREEN}$ "
+$BOTTOM_TOOLBAR = "{BACKGROUND_WHITE}{BLACK}{user}@{hostname}"
 
 # my aliases dict
 als ={}
