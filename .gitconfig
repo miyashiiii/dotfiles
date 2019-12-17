@@ -41,6 +41,7 @@
     ms = merge --squash
     mt = mergetool
     rs = reset
+    rsh = reset --hard
     rh = reset --hard
     s = status --short --branch
     st = status 
