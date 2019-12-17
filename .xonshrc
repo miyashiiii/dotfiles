@@ -59,15 +59,15 @@ als['il'] = 'imgls'
 # aws
 def _ec2ls_internal():
     import json
-    result_json = $(aws ec2 describe-instances --query "Reservations[*].Instances[0].{Name:Tags[?Key==`Name`].Value,PublicDnsName:PublicDnsName}" --filters "Name=tag:CreatedBy,Values=Y.Miyashita")
+    result_json = $(aws ec2 describe-instances --query "Reservations[*].Instances[0].{Name:Tags[?Key==`Name`].Value,PublicDnsName:PublicDnsName,InstanceId:InstanceId}" --filters "Name=tag:CreatedBy,Values=Y.Miyashita")
     result = json.loads(result_json)
-    instances = [(instance["Name"][0],instance["PublicDnsName"]) for instance in result]
+    instances = [(instance["Name"][0],instance["PublicDnsName"], instance["InstanceId"]) for instance in result]
     return instances
 
 def _ec2ls(_):
     results = _ec2ls_internal()
-    for k,v in results:
-        print(f"{k:25}:{v if v else 'stopped'}")
+    for name, dns_name, id_ in results:
+        print(f"{id_:21}{name:28}:{dns_name if dns_name else 'stopped'}")
 als['ec2ls'] = _ec2ls
 
 # git 
