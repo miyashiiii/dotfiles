@@ -241,6 +241,16 @@ def _imgls(args):
     xontrib.mplhooks.display_figure_with_iterm2(fig)
 aliases['imgls'] = _imgls
 
+import urllib
+def _decode_url(args):
+    url = args[0]
+    decoded = urllib.parse.unquote(url)
+    decoded = decoded.replace(" ", "%20")
+    $(echo -n @(decoded) | pbcopy) 
+    print(f"copy to clipboard: {decoded}")
+
+als["decode_url"] = _decode_url
+
 def _aliases_to_zshrc():
     zrc_alias_path = f"{$HOME}/.zsh_alias"
     ignore_keys =["sx"]
