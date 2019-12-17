@@ -251,6 +251,33 @@ def _decode_url(args):
 
 als["decode_url"] = _decode_url
 
+import tqdm
+def _rand_split(args):
+    dirpath, ratio = args[:2]
+    dirpath = Path(dirpath)
+    if not dirpath.exists():
+        print("dir not found:", dirpath)
+        return
+    output_dir_0 = dirpath.parent/f"{dirpath.name}_0"
+    output_dir_0.mkdir()
+    output_dir_1 = dirpath.parent/f"{dirpath.name}_1"
+    output_dir_1.mkdir()
+    paths = [path for path in Path(dirpath).glob("*")]
+    all_num = len(paths)
+    num_0 = int(all_num*float(ratio))
+    num_1 = all_num - num_0
+    print(f"{num_0}:{num_1}")
+    
+    random.shuffle(paths)
+    print("split_0:") 
+    for path in tqdm(paths[:num_0]):
+        shutil.copy(path, output_dir_0/path.name)
+    print("split_1:") 
+    for path in tqdm(paths[num_0:]):
+        shutil.copy(path, output_dir_1/path.name)
+    
+als["randsplit"] = _rand_split
+
 def _aliases_to_zshrc():
     zrc_alias_path = f"{$HOME}/.zsh_alias"
     ignore_keys =["sx"]
