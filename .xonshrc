@@ -1,5 +1,20 @@
-xonshrc_work_name = ".xonshrc-work"
+import argparse
+import datetime
+import importlib
+import json
+import random
+import urllib
 from pathlib import Path
+
+import cv2
+
+import matplotlib
+import matplotlib.pyplot as plt
+import tqdm
+import xontrib.mplhooks
+from xonsh.lazyasd import lazyobject
+
+xonshrc_work_name = ".xonshrc-work"
 if Path(xonshrc_work_name).is_symlink():
     source @(xonshrc_work_name)
 
@@ -58,7 +73,6 @@ als['il'] = 'imgls'
 
 # aws
 def _ec2ls_internal():
-    import json
     result_json = $(aws ec2 describe-instances --query "Reservations[*].Instances[0].{Name:Tags[?Key==`Name`].Value,PublicDnsName:PublicDnsName,InstanceId:InstanceId}" --filters "Name=tag:CreatedBy,Values=Y.Miyashita")
     result = json.loads(result_json)
     instances = [(instance["Name"][0],instance["PublicDnsName"], instance["InstanceId"]) for instance in result]
@@ -122,7 +136,6 @@ def _bwunlock():
 als['bwul']= _bwunlock
 
 # 日報
-import datetime
 def _nippo():
     n = datetime.datetime.now()
     weekdays = ["月","火","水","木","金","土","日",]
@@ -164,7 +177,6 @@ xontrib load vox
 $AUTO_CD = True
 
 # 各ファイルのシンボリックリンク作成
-from pathlib import Path
 def make_ln(filename):
     $(ln -sf $DOTFILES/@(filename) $HOME/@(filename))
 
@@ -186,33 +198,6 @@ def _lndf(args):
 	return
     make_ln(args[0])
 aliases['lndf'] = _lndf
-
-# ライブラリの実行時import
-# https://vaaaaaanquish.hatenablog.com/entry/2017/12/26/190153
-# xonsh上で使うときがありそうなライブラリはlazyasdで補完時、実行時に読み込み
-from xonsh.lazyasd import lazyobject
-import importlib
-lazy_module_dict = {
-    'sys': 'sys',
-    'random': 'random',
-    'shutil': 'shutil',
-    'pd': 'pandas',
-    'np': 'numpy',
-    'requests': 'requests',
-    'os': 'os',
-    'plt': 'matplotlib.pyplot',
-        }
-for k,v in lazy_module_dict.items():
-    t = f"@lazyobject\ndef {k}():\n    return importlib.import_module('{v}')"
-    exec(t)
-
-import matplotlib
-import matplotlib.pyplot as plt
-import xontrib.mplhooks
-import cv2
-import random
-
-import argparse
 
 matplotlib.use("agg")
 def _imgls(args):
@@ -241,7 +226,6 @@ def _imgls(args):
     xontrib.mplhooks.display_figure_with_iterm2(fig)
 aliases['imgls'] = _imgls
 
-import urllib
 def _decode_url(args):
     url = args[0]
     decoded = urllib.parse.unquote(url)
@@ -251,7 +235,6 @@ def _decode_url(args):
 
 als["decode_url"] = _decode_url
 
-import tqdm
 def _rand_split(args):
     dirpath, ratio = args[:2]
     dirpath = Path(dirpath)
