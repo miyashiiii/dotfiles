@@ -105,8 +105,10 @@ als['rcs'] = 'rails console'
 # python
 als['ve'] = 'python -m venv venv'
 als['ave'] = 'source ./venv/bin/activate'
+als['vpy'] = './venv/bin/python'
 
 # typo
+als['py'] = 'python'
 als['pythno'] = 'python'
 als['opne'] = 'open'
 
