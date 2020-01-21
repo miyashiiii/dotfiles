@@ -11,10 +11,18 @@
     tool = charm
 [difftool "charm"]
     cmd = charm diff "$LOCAL" "$REMOTE" && echo "Press enter to continue..." && read
+[difftool "studio"]
+    cmd = studio diff "$LOCAL" "$REMOTE" && echo "Press enter to continue..." && read
+[difftool "code"]
+    cmd = code --wait --diff "$LOCAL" "$REMOTE"
 [merge]
     tool = charm
 [mergetool "charm"]
     cmd = charm merge "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+[mergetool "studio"]
+    cmd = studio merge "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+[mergetool "code"]
+    cmd = code --wait "$MERGED"
 [alias]
     a = add
     aa = add --all
@@ -28,8 +36,8 @@
     cim = commit -m
     co = checkout
     cob = checkout -b
-    d = difftool -dy
-    dc = difftool -dy --cached
+    d = !git difftool -dy -t $DIFF_TOOL
+    dc = !git difftool -dy --cached -t $DIFF_TOOL
     di = diff   
     dic = diff --cached
     f = fetch --prune
