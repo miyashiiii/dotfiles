@@ -263,6 +263,19 @@ def _rand_split(args):
     
 als["randsplit"] = _rand_split
 
+def _difftool(args):
+    difftool = args[0]
+    valid_tools = ["charm", "studio", "code"]
+    if difftool not in valid_tools:
+        print(f"\"{difftool}\" is invalid. valid values: {valid_tools}")
+        return
+    $DIFF_TOOL = difftool
+
+als["difftool"] = _difftool
+"""
+aliases in only xonsh
+"""
+
 def _aliases_to_zshrc():
     zrc_alias_path = f"{$HOME}/.zsh_alias"
     ignore_keys =["sx"]
