@@ -84,6 +84,21 @@ def _ec2ls(_):
         print(f"{id_:21}{name:28}:{dns_name if dns_name else 'stopped'}")
 als['ec2ls'] = _ec2ls
 
+def _awsprof(args):
+    if not args:
+        try:
+            print($AWS_DEFAULT_PROFILE)
+        except KeyError as e:
+            #import traceback
+            #traceback.print_exc()
+            print("default")
+        return
+
+    profname = args[0]
+    $AWS_DEFAULT_PROFILE = profname
+
+als['awsprof'] = _awsprof
+
 # git 
 als['vg'] = 'vi ~/.gitconfig'
 als['vgi'] = 'vi .gitignore'
