@@ -55,6 +55,7 @@
     st = status 
     su = submodule update
     p = push
+    pu = push -u
     pl = pull
     poh = push origin head
     fo = fetch --prune origin
