@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
     name = Miyashita Yosuke
-    email = dev.miyashiiii@gmail.com
+    email = yosuke.miyashita@gmail.com
 [includeIf "gitdir:~/Works/"]
     path = ~/.gitconfig-work
 [core]
