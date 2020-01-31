@@ -10,6 +10,7 @@ path=(
     /usr/local/octave/3.8.0/bin
     ~/.npm-global/bin
     ~/.gem/ruby/2.0.0/bin
+    ~/Library/Android/sdk/platform-tools
 )
 
 eval "$(pyenv init -)"
