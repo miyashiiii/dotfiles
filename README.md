@@ -17,7 +17,7 @@ git clone git://github.com/yyuu/pyenv.git ~/.pyenv
 pyenv install 3.X.X
 pyenv global 3.X.X
 
-pip install xonsh prompt_toolkit matplotlib opencv-python
+pip install xonsh prompt_toolkit matplotlib opencv-python tqdm
 
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
 sh ./installer.sh ~/.cache/dein
