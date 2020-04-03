@@ -1,4 +1,6 @@
 export PYENV_ROOT="$HOME/.pyenv"
+export DIFF_TOOL="charm"
+
 path=(
     /snap/bin
     $PYENV_ROOT/bin
