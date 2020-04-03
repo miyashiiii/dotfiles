@@ -15,8 +15,6 @@ path=(
 
 eval "$(pyenv init -)"
 
-export TERMINAL_APP="" 
-
 source ~/.zsh_alias
 alias sz="source ~/.zshrc"
 
