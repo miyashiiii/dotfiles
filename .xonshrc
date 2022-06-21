@@ -38,26 +38,40 @@ als['ll'] = 'ls -la'
 # s3
 als['sss'] = 'aws s3'
 
+$DEFAULT_PEM = "pets.pem"
 # ssh
-def _sshub(args):
-    port = 6007
+def _sshec2(args):
+    dns = args[0]
+    user = input("user name? [ec2-user]" )
+    if user == "":
+        user = "ec2-user"
+    print(user)
+    pem = input(f"pem file name? [{$DEFAULT_PEM}]")
+    if pem == "":
+        pem = $DEFAULT_PEM
+    print($DEFAULT_PEM)
+    $DEFAULT_PEM = pem
+     
+    port = 6006
     for i in range(10):
         if not $(lsof -i:@(port)):
             print("blank")
             break
         port+=1
     else:
-        print("no available port in 6007 to 6016")
+        print("no available port in 6006 to 6015")
         return
     print(f"port forward to {port}")
-    ssh -i ~/.ssh/miya-work.pem -L @(port):localhost:6006 ubuntu@@(args[0])
 
-# als['sshub'] = 'ssh -i ~/.ssh/miya-work.pem -L 6008:localhost:6006'
-als['sshub'] = _sshub
-als['ssh2'] = 'ssh -i ~/.ssh/miya-work.pem -L 6009:localhost:6006'
+
+    print(f"ssh -i ~/.ssh/{pem} -L {port}:localhost:6006 {user}@{dns}")
+    #print(f"ssh -i ~/.ssh/{pem) -L {port}:localhost:6006 {user}@{dns}")
+    ssh -i ~/.ssh/@(pem) -L @(port):localhost:6006 @(user)@@(dns)
+
+als['sshec2'] = _sshec2
 
 # scp
-als['scp'] = 'scp -i ~/.ssh/miya-work.pem'
+als['scp'] = 'scp -i ~/.ssh/sip-miya.pem'
 
 # cd
 als['c'] = 'cd'
