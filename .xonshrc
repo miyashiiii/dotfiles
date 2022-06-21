@@ -71,6 +71,18 @@ def auto_ls(olddir, newdir, **kwargs):
 als['ic'] = 'imgcat'
 als['il'] = 'imgls'
 
+# export
+def _export(args):
+    split = args[0].split("=")
+    if len(split) == 2:
+        key, value = split
+    else:
+        key = split[0]
+        value = "=".join(split[1:])
+    ${key} = value[1:-1]
+    print(value[1:-1])
+als['export'] = _export
+
 # aws
 def _ec2ls_internal():
     result_json = $(aws ec2 describe-instances --query "Reservations[*].Instances[0].{Name:Tags[?Key==`Name`].Value,PublicDnsName:PublicDnsName,InstanceId:InstanceId}" --filters "Name=tag:CreatedBy,Values=Y.Miyashita")
