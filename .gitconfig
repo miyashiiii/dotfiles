@@ -37,6 +37,7 @@
     cim = commit -m
     co = checkout
     cob = checkout -b
+    chp = cherry-pick
     d = !git difftool -dy -t $DIFF_TOOL
     dc = !git difftool -dy --cached -t $DIFF_TOOL
     di = diff   
