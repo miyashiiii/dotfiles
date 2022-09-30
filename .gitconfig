@@ -2,6 +2,7 @@
 [user]
     name = Miyashita Yosuke
     email = yosuke.miyashita@gmail.com
+	password = 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
 [includeIf "gitdir:~/Works/"]
     path = ~/.gitconfig-work
 [core]
@@ -9,7 +10,7 @@
     excludesfile = ~/.gitignore_global
     ignorecase = false
 [diff]
-    tool = charm
+    tool = code
 [difftool "charm"]
     cmd = charm diff "$LOCAL" "$REMOTE" && echo "Press enter to continue..." && read
 [difftool "studio"]
@@ -35,8 +36,6 @@
     cam = commit -am
     ci = commit 
     cim = commit -m
-    co = checkout
-    cob = checkout -b
     chp = cherry-pick
     d = !git difftool -dy -t $DIFF_TOOL
     dc = !git difftool -dy --cached -t $DIFF_TOOL
@@ -56,6 +55,8 @@
     s = status --short --branch
     st = status 
     su = submodule update
+    sw = switch
+    swc = switch -c
     p = push
     pu = push -u
     pl = pull
