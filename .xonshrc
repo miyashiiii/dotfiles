@@ -158,6 +158,7 @@ als['jn'] = 'jupyter notebook'
 als['pi'] = 'pip install'
 als['lc'] = 'ls -1 | wc -l'
 als['x'] = 'xonsh'
+als['prw'] = 'prettier -w'
 
 # bitwarden
 def _bwpassword(name):
