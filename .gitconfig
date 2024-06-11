@@ -6,9 +6,9 @@
 [includeIf "gitdir:~/Works/"]
     path = ~/.gitconfig-work
 [core]
-    editor = vim
     excludesfile = ~/.gitignore_global
     ignorecase = false
+	editor = code --wait
 [diff]
     tool = code
 [difftool "charm"]
@@ -27,7 +27,6 @@
     cmd = code --wait "$MERGED"
 [alias]
     a = add
-    aa = add --all
     alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
     b = branch -a
     br = browse-remote
@@ -37,6 +36,10 @@
     ci = commit 
     cim = commit -m
     chp = cherry-pick
+    chpc = cherry-pick --continue
+    chps = cherry-pick --skip
+    co = checkout
+    cob = checkout -b
     d = !git difftool -dy -t $DIFF_TOOL
     dc = !git difftool -dy --cached -t $DIFF_TOOL
     di = diff   
@@ -49,6 +52,9 @@
     m = merge
     ms = merge --squash
     mt = mergetool
+    rb = rebase
+    rbc = rebase --continue
+    rbs = rebase --skip
     rs = reset
     rsh = reset --hard
     rh = reset --hard
