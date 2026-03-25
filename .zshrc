@@ -5,35 +5,24 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export PYENV_ROOT="$HOME/.pyenv"
-export DIFF_TOOL="charm"
-
 path=(
-    /snap/bin
-    $PYENV_ROOT/bin
+    /opt/homebrew/bin
     /usr/sbin
     /usr/local/bin
     /usr/bin
     /bin
-    ~/.nodebrew/current/bin
-    /usr/local/octave/3.8.0/bin
     ~/.npm-global/bin
 )
 
 # aliases from xsh start
-alias vx='vi ~/.xonshrc'
 alias vv='vi ~/.vimrc'
 alias vz='vi ~/.zshrc'
 alias la='ls -a'
 alias ll='ls -la'
 alias sss='aws s3'
-alias ssh='ssh -i ~/.ssh/miya-work.pem -L 6008:localhost:6006'
-alias ssh2='ssh -i ~/.ssh/miya-work.pem -L 6009:localhost:6006'
-alias scp='scp -i ~/.ssh/miya-work.pem'
 alias cdf='cd ~/dotfiles'
 alias ic='imgcat'
 alias il='imgls'
-alias ec2ls='aws ec2 describe-instances --query "Reservations[*].Instances[0].{Name:Tags[?Key==`Name`].Value,PublicDnsName:PublicDnsName}" --filters "Name=tag:CreatedBy,Values=Y.Miyashita"'
 alias vg='vi ~/.gitconfig'
 alias vgi='vi .gitignore'
 alias g='git'
@@ -71,26 +60,14 @@ alias grs='git rs'
 alias gs='git s'
 alias gst='git st'
 alias gsu='git su'
-alias rsv='rails server'
-alias rts='rails test'
-alias jn='jupyter notebook'
-alias pi='pip install'
 alias lc='ls -1 | wc -l'
-alias x='xonsh'
 # aliases from xsh end
 
-source ~/.zsh_alias
 alias sz="source ~/.zshrc"
 
 setopt auto_cd
 function chpwd() { ls }
 
-autoload -Uz vcs_info
-precmd () { vcs_info }
-zstyle ':vcs_info:git:*' formats '%b'
-setopt PROMPT_SUBST
-
-PROMPT='[%~] %{${vcs_info_msg_0_}%} $ '
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -110,8 +87,7 @@ autoload -Uz _zinit
 zinit light-mode for \
     zdharma-continuum/zinit-annex-as-monitor \
     zdharma-continuum/zinit-annex-bin-gem-node \
-    zdharma-continuum/zinit-annex-patch-dl \
-    zdharma-continuum/zinit-annex-rust
+    zdharma-continuum/zinit-annex-patch-dl
 
 ### End of Zinit's installer chunk
 zinit ice depth=1; zinit light romkatv/powerlevel10k
@@ -120,3 +96,8 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 zinit light zsh-users/zsh-autosuggestions
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
