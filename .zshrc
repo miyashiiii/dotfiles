@@ -13,6 +13,7 @@ path=(
     /bin
     ~/.npm-global/bin
 )
+eval "$(mise activate zsh)"
 
 # aliases from xsh start
 alias vv='vi ~/.vimrc'
@@ -64,6 +65,7 @@ alias lc='ls -1 | wc -l'
 # aliases from xsh end
 
 alias sz="source ~/.zshrc"
+alias c="claude --enable-auto-mode"
 
 setopt auto_cd
 function chpwd() { ls }
@@ -97,7 +99,7 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 zinit light zsh-users/zsh-autosuggestions
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 

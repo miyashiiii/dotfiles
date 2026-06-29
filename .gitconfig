@@ -2,7 +2,6 @@
 [user]
     name = Miyashita Yosuke
     email = yosuke.miyashita@gmail.com
-	password = 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
 [includeIf "gitdir:~/Works/"]
     path = ~/.gitconfig-work
 [core]
@@ -66,7 +65,6 @@
     p = push
     pu = push -u
     pl = pull
-    poh = push origin head
     fo = fetch --prune origin
     fu = fetch --prune upstream
 [fetch]
